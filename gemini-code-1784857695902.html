@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地底透視術：淺層折射震測實驗小教室</title>
+    <!-- MathJax 用於渲染 LaTeX 數學公式 -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-hover: #4f46e5;
+            --accent: #10b981;
+            --bg-dark: #0f172a;
+            --card-bg: #1e293b;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        body {
+            font-family: 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.4);
+        }
+
+        h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.2rem;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 1px solid #334155;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #38bdf8;
+            border-bottom: 2px solid #334155;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .highlight {
+            color: #f59e0b;
+            font-weight: bold;
+        }
+
+        .analogy-box {
+            background-color: rgba(16, 185, 129, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 15px;
+            border-radius: 0 8px 8px 0;
+            margin: 15px 0;
+        }
+
+        /* 互動計算機樣式 */
+        .calculator {
+            background-color: #0f172a;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-muted);
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #475569;
+            background-color: #1e293b;
+            color: #fff;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #1e293b;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--accent);
+            border: 1px dashed var(--accent);
+        }
+
+        .step-list {
+            padding-left: 20px;
+        }
+
+        .step-list li {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--text-muted);
+            padding: 20px;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>⚡ 地底透視術：折射震測學習教室</h1>
+        <div class="subtitle">不用開挖，就能用「光的折射原理」看穿地下三公尺！[cite: 1]</div>
+    </header>
+
+    <!-- 關卡 1：核心概念 -->
+    <div class="card">
+        <h2>🏎️ 關卡 1：地底下的超車大賽（核心原理）</h2>
+        <p>當我們拿重鎚敲擊地面時，震波會向地底擴散[cite: 1]。想像有兩位賽車手在比賽：</p>
+        
+        <div class="analogy-box">
+            <strong>🚗 賽車手 A（直達波）：</strong>走地表的平面省道（速度 $V_1$ 較慢），路徑最短，短距離內遙遙領先[cite: 1]。<br><br>
+            <strong>🏎️ 賽車手 B（臨界折射波）：</strong>繞了一點路向下開到深層的「高速公路」（速度 $V_2$ 較快），再折返地表[cite: 1]。雖然多走了路，但在高速公路上能狂飆[cite: 1]！
+        </div>
+
+        <p>只要目的地夠遠，走高速公路的 <strong>賽車手 B 最終會超車賽車手 A</strong>[cite: 1]！這個超越的瞬間距離，就稱為 <span class="highlight">「超越距離 ($X_c$)」</span>[cite: 1]。這也是透視地底厚度的關鍵密碼[cite: 1]！</p>
+    </div>
+
+    <!-- 關卡 2：關鍵物理公式 -->
+    <div class="card">
+        <h2>📐 關卡 2：解開地底密碼的神奇公式</h2>
+        <p>透過斯乃耳定律（Snell's Law）與幾何推導[cite: 1]，我們可以得到計算地層厚度 $h$ 的核心公式：</p>
+
+        <p>$$h = \frac{X_c \sqrt{V_2 - V_1}}{2 \sqrt{V_2 + V_1}}$$</p>
+
+        <ul>
+            <li><strong>$V_1$：</strong> 第一層（表土）的震波速度[cite: 1]</li>
+            <li><strong>$V_2$：</strong> 第二層（深層/岩盤）的震波速度（需滿足 $V_2 > V_1$）[cite: 1]</li>
+            <li><strong>$X_c$：</strong> 超越距離（走時曲線圖上兩線相交的位置）[cite: 1]</li>
+        </ul>
+    </div>
+
+    <!-- 關卡 3：實作體驗計算機 -->
+    <div class="card">
+        <h2>🧪 關卡 3：動態地層厚度計算機</h2>
+        <p>試著輸入臺北市立大學實地探勘實驗的數據，計算地下地層有多深吧[cite: 1]！</p>
+        
+        <div class="calculator">
+            <div class="input-group">
+                <label for="v1">表層波速 $V_1$ (m/s)：</label>
+                <input type="number" id="v1" value="400" placeholder="例如：400">
+            </div>
+            <div class="input-group">
+                <label for="v2">深層波速 $V_2$ (m/s)：</label>
+                <input type="number" id="v2" value="1000" placeholder="例如：1000">
+            </div>
+            <div class="input-group">
+                <label for="xc">超越距離 $X_c$ (公尺)：</label>
+                <input type="number" id="xc" value="15" placeholder="例如：15">
+            </div>
+            <button onclick="calculateDepth()">立即計算地層厚度 (h)</button>
+
+            <div class="result" id="resultBox">
+                🎯 地層厚度 $h$：點擊上方按鈕開始計算
+            </div>
+        </div>
+    </div>
+
+    <!-- 關卡 4：野外實驗 5 步驟 -->
+    <div class="card">
+        <h2>🔨 關卡 4：野外探勘 5 步驟懶人包</h2>
+        <p>根據實地探勘流程（如北市大圖書館後方實驗）[cite: 1]：</p>
+        <ol class="step-list">
+            <li><strong>規劃測线：</strong> 拉開皮尺（如 48 公尺）劃定測線[cite: 1]。</li>
+            <li><strong>插地震儀：</strong> 每隔固定距離（如 2 公尺）將地震儀穩固植入土壤[cite: 1]。</li>
+            <li><strong>重鎚敲擊：</strong> 用大鐵鎚重敲鐵板製造人工震波[cite: 1]。</li>
+            <li><strong>訊號疊加：</strong> 電腦接收數據並疊加抑制雜訊[cite: 1]。</li>
+            <li><strong>判讀繪圖：</strong> 繪製「走時曲線圖」，反推地底結構[cite: 1]！</li>
+        </ol>
+    </div>
+
+    <footer>
+        <p>資料來源：國立臺灣科學教育館《科學研習》第65卷第3期 — 淺層地底構造探勘[cite: 1]</p>
+    </footer>
+</div>
+
+<script>
+    function calculateDepth() {
+        const v1 = parseFloat(document.getElementById('v1').value);
+        const v2 = parseFloat(document.getElementById('v2').value);
+        const xc = parseFloat(document.getElementById('xc').value);
+
+        if (isNaN(v1) || isNaN(v2) || isNaN(xc)) {
+            document.getElementById('resultBox').innerText = "⚠️ 請輸入有效的數值！";
+            return;
+        }
+
+        if (v2 <= v1) {
+            document.getElementById('resultBox').innerText = "⚠️ 深層波速 (V2) 必須大於表層波速 (V1) 才能產生臨界折射！";
+            return;
+        }
+
+        // 公式： h = (Xc * sqrt(V2 - V1)) / (2 * sqrt(V2 + V1))
+        const num = xc * Math.sqrt(v2 - v1);
+        const den = 2 * Math.sqrt(v2 + v1);
+        const h = num / den;
+
+        document.getElementById('resultBox').innerHTML = `🎉 計算成功！地下表層厚度 $h$ 約為 <strong>${h.toFixed(2)}</strong> 公尺`;
+        
+        // 重新渲染 MathJax 動態文字
+        if (window.MathJax) {
+            MathJax.typesetPromise();
+        }
+    }
+</script>
+
+</body>
+</html>
