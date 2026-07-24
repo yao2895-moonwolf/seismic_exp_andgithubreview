@@ -167,11 +167,11 @@
         <p>當我們拿重鎚敲擊地面時，震波會向地底擴散[cite: 1]。想像有兩位賽車手在比賽：</p>
         
         <div class="analogy-box">
-            <strong>🚗 賽車手 A（直達波）：</strong>走地表的平面省道（速度 $V_1$ 較慢），路徑最短，短距離內遙遙領先[cite: 1]。<br><br>
-            <strong>🏎️ 賽車手 B（臨界折射波）：</strong>繞了一點路向下開到深層的「高速公路」（速度 $V_2$ 較快），再折返地表[cite: 1]。雖然多走了路，但在高速公路上能狂飆[cite: 1]！
+            <strong>🚗 賽車手 A（直達波）：</strong>走地表的平面省道（速度 V<sub>1</sub> 較慢），路徑最短，短距離內遙遙領先[cite: 1]。<br><br>
+            <strong>🏎️ 賽車手 B（臨界折射波）：</strong>繞了一點路向下開到深層的「高速公路」（速度 V<sub>2</sub> 較快），再折返地表[cite: 1]。雖然多走了路，但在高速公路上能狂飆[cite: 1]！
         </div>
 
-        <p>只要目的地夠遠，走高速公路的 <strong>賽車手 B 最終會超車賽車手 A</strong>[cite: 1]！這個超越的瞬間距離，就稱為 <span class="highlight">「超越距離 ($X_c$)」</span>[cite: 1]。這也是透視地底厚度的關鍵密碼[cite: 1]！</p>
+        <p>只要目的地夠遠，走高速公路的 <strong>賽車手 B 最終會超車賽車手 A</strong>[cite: 1]！這個超越的瞬間距離，就稱為 <span class="highlight">「超越距離 (X<sub>c</sub>)」</span>[cite: 1]。這也是透視地底厚度的關鍵密碼[cite: 1]！</p>
     </div>
 
     <!-- 關卡 2：關鍵物理公式 -->
@@ -182,9 +182,9 @@
         <p>$$h = \frac{X_c \sqrt{V_2 - V_1}}{2 \sqrt{V_2 + V_1}}$$</p>
 
         <ul>
-            <li><strong>$V_1$：</strong> 第一層（表土）的震波速度[cite: 1]</li>
-            <li><strong>$V_2$：</strong> 第二層（深層/岩盤）的震波速度（需滿足 $V_2 > V_1$）[cite: 1]</li>
-            <li><strong>$X_c$：</strong> 超越距離（走時曲線圖上兩線相交的位置）[cite: 1]</li>
+            <li><strong>V<sub>1</sub>：</strong> 第一層（表土）的震波速度[cite: 1]</li>
+            <li><strong>V<sub>2</sub>：</strong> 第二層（深層/岩盤）的震波速度（需滿足 V<sub>2</sub> > V<sub>1</sub>）[cite: 1]</li>
+            <li><strong>X<sub>c</sub>：</strong> 超越距離（走時曲線圖上兩線相交的位置）[cite: 1]</li>
         </ul>
     </div>
 
@@ -195,15 +195,15 @@
         
         <div class="calculator">
             <div class="input-group">
-                <label for="v1">表層波速 $V_1$ (m/s)：</label>
+                <label for="v1">表層波速 V<sub>1</sub> (m/s)：</label>
                 <input type="number" id="v1" value="400" placeholder="例如：400">
             </div>
             <div class="input-group">
-                <label for="v2">深層波速 $V_2$ (m/s)：</label>
+                <label for="v2">深層波速 V<sub>2</sub> (m/s)：</label>
                 <input type="number" id="v2" value="1000" placeholder="例如：1000">
             </div>
             <div class="input-group">
-                <label for="xc">超越距離 $X_c$ (公尺)：</label>
+                <label for="xc">超越距離 X<sub>c</sub> (公尺)：</label>
                 <input type="number" id="xc" value="15" placeholder="例如：15">
             </div>
             <button onclick="calculateDepth()">立即計算地層厚度 (h)</button>
